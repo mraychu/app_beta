@@ -40,19 +40,19 @@ export function listMorePosts() {
 
 export function listPosts(searchText) {
     return (dispatch, getState) => {
-        dispatch(startListPosts(searchText));
-        getBookNTHU(searchText).then(posts => {
-            dispatch(endListPosts(posts,searchText));
-        }).catch(err => {
-            dispatch(endListPosts(null,''));
-            console.error('Error listing posts at NTHU...', err);
-        });
-        getBookNCTU(searchText).then(posts => {
-            dispatch(endListPosts(posts,searchText));
-        }).catch(err => {
-            dispatch(endListPosts(null,''));
-            console.error('Error listing posts at NCTU...', err);
-        });
+        // dispatch(startListPosts(searchText));
+        // getBookNTHU(searchText).then(posts => {
+        //     dispatch(endListPosts(posts,searchText));
+        // }).catch(err => {
+        //     dispatch(endListPosts(null,''));
+        //     console.error('Error listing posts at NTHU...', err);
+        // });
+        // getBookNCTU(searchText).then(posts => {
+        //     dispatch(endListPosts(posts,searchText));
+        // }).catch(err => {
+        //     dispatch(endListPosts(null,''));
+        //     console.error('Error listing posts at NCTU...', err);
+        // });
     };
 };
 
