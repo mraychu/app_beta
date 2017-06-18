@@ -14,10 +14,9 @@ import {listHistory, listMoreHistory} from '../states/history-actions';
 class HistoryList extends React.Component {
     static propTypes = {
         //searchText: PropTypes.string.isRequired,
-        listingPosts: PropTypes.number.isRequired,
         listingLength: PropTypes.number.isRequired,
         hasMore: PropTypes.bool.isRequired,
-        posts: PropTypes.array.isRequired,
+        historyList: PropTypes.array.isRequired,
         dispatch: PropTypes.func.isRequired
     };
 
@@ -41,7 +40,7 @@ class HistoryList extends React.Component {
         const {listingLength, dispatch, historyList} = this.props;
         if (listingLength!==nextProps.listingLength || historyList !== nextProps.historyList) {
             this.setState({
-                dataSource: this.state.dataSource.cloneWithRows(nextProps.posts.slice(0,nextProps.listingLength))
+                dataSource: this.state.dataSource.cloneWithRows(nextProps.historyList.slice(0,nextProps.listingLength))
             });
         }
     }

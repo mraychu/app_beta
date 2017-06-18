@@ -11,6 +11,7 @@ import {Content} from 'native-base';
 import NavigationContainer from './NavigationContainer';
 
 import {connect} from 'react-redux';
+import HistoryList from './HistoryList';
 
 class ForecastScreen extends React.Component {
     static propTypes = {
@@ -27,9 +28,7 @@ class ForecastScreen extends React.Component {
         const {navigate} = this.props.navigation;
         return (
             <NavigationContainer navigate={navigate} title='Forecast'>
-                <View style={{flex: 1, justifyContent: 'center'}}>
-                    <Text style={{textAlign: 'center'}}>Searchtext: {searchText}</Text>
-                </View>
+                <HistoryList />
             </NavigationContainer>
         );
     }

@@ -9,7 +9,7 @@ import {ListItem, Icon} from 'native-base';
 
 export default class HistoryItem extends React.Component {
     static propTypes = {
-        dispatch: PropTypes.func.isRequired
+
     };
 
     constructor(props) {
@@ -17,13 +17,13 @@ export default class HistoryItem extends React.Component {
     }
 
     render() {
-        const {text,type,date} = this.props;
+        const {searchText,type,date} = this.props;
 
         return (
             <ListItem style={StyleSheet.flatten(styles.listItem)}>
                 <View style={styles.wrap}>
-                    <Text style={styles.text}>{text}</Text>
-                    <Text style={styles.text}>{type}</Text>
+                    <Text style={styles.text}>{searchText}</Text>
+                    <Text style={styles.text}>{type=='name'?'書名':'ISBN'}</Text>
                     <Text style={styles.text}>{date}</Text>
                 </View>
             </ListItem>

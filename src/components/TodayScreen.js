@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 import {View, TouchableWithoutFeedback, Image} from 'react-native';
 import InfiniteScrollView from 'react-native-infinite-scroll-view';
 
@@ -137,7 +138,8 @@ class TodayScreen extends React.Component {
         this.props.dispatch(setSearchText(e.nativeEvent.text));
     }
     handleHistory(e){
-        let historyList = this.props.history;
+        let ts=moment().unix();
+        let historyList = this.props.historyList;
             if (historyList === undefined) {
                 historyList = [];
             } else if (historyList.length>=15) {
@@ -150,8 +152,7 @@ class TodayScreen extends React.Component {
             date: moment(ts * 1000).calendar()
         };
         console.log(adder);
-        console.log('hi');
-        historyList = historyList.concat(adder);
+        historyList = adder.concat(historyList);
         console.log(historyList);
         console.log(moment(ts * 1000).calendar());
         this.props.dispatch(addHistory(historyList));
