@@ -6,7 +6,7 @@ const initPostState = {
     listingPosts: 0,
     listingLength: 0, // id of post from which to start
     posts: [],
-    hasMore: true,
+    hasMore: false,
     creatingPost: false,
     creatingVote: false
 };
@@ -16,6 +16,7 @@ export function post(state = initPostState, action) {
             return {
                 ...state,
                 posts: [],
+                hasMore: false,
                 listingId: action.searchText,
                 listingPosts: 2,
                 listingLength: 0

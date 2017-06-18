@@ -65,11 +65,17 @@ export function getBookNTHU(searchText, type) {
 
         console.log("Fetch done with ",res);
         return new Promise( (resolve,reject) => {
-            let reader = new FileReader();
-            reader.addEventListener('loadend',(e)=> {
-                resolve(e.srcElement.result);
-            });
-            reader.readAsText(res._bodyBlob);
+            if (res._bodyBlob) {
+                let reader = new FileReader();
+                reader.addEventListener('loadend',(e)=> {
+                    resolve(e.srcElement.result);
+                });
+                reader.readAsText(res._bodyBlob);
+            } else if (res._bodyText) {
+                resolve(res._bodyText);
+            } else {
+                reject("Unknown response format...");
+            }
         }).then( (res) => {
             const titleFlag = "var title = "
             const authorFlag = "<td   width=\"15%\" valign=top>";
@@ -215,11 +221,17 @@ export function getBookNCTU(searchText, type) {
 
         console.log("Fetch done with ",res);
         return new Promise( (resolve,reject) => {
-            let reader = new FileReader();
-            reader.addEventListener('loadend',(e)=> {
-                resolve(e.srcElement.result);
-            });
-            reader.readAsText(res._bodyBlob);
+            if (res._bodyBlob) {
+                let reader = new FileReader();
+                reader.addEventListener('loadend',(e)=> {
+                    resolve(e.srcElement.result);
+                });
+                reader.readAsText(res._bodyBlob);
+            } else if (res._bodyText) {
+                resolve(res._bodyText);
+            } else {
+                reject("Unknown response format...");
+            }
         }).then( (res) => {
             const titleFlag = "var title = "
             const authorFlag = "<td class=td1  width=\"15%\" valign=top>";
