@@ -146,13 +146,14 @@ class TodayScreen extends React.Component {
             }
         let adder = {
             searchText: this.props.searchText,
-            type: 'name'
+            type: 'name',
+            date: moment(ts * 1000).calendar()
         };
         console.log(adder);
         console.log('hi');
         historyLists = historyLists.concat(adder);
         console.log(historyLists);
-        console.log('yoo');
+        console.log(moment(ts * 1000).calendar());
         this.props.dispatch(addHistory(historyLists));
     }
 }
