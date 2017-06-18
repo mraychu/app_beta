@@ -137,12 +137,12 @@ class TodayScreen extends React.Component {
         this.props.dispatch(setSearchText(e.nativeEvent.text));
     }
     handleHistory(e){
-        let historyLists = this.props.history;
-            if (historyLists === undefined) {
-                historyLists = [];
-            } else if (historyLists.length>=15) {
+        let historyList = this.props.history;
+            if (historyList === undefined) {
+                historyList = [];
+            } else if (historyList.length>=15) {
                 // Max # of history
-                historyLists.pop();
+                historyList.pop();
             }
         let adder = {
             searchText: this.props.searchText,
@@ -151,10 +151,10 @@ class TodayScreen extends React.Component {
         };
         console.log(adder);
         console.log('hi');
-        historyLists = historyLists.concat(adder);
-        console.log(historyLists);
+        historyList = historyList.concat(adder);
+        console.log(historyList);
         console.log(moment(ts * 1000).calendar());
-        this.props.dispatch(addHistory(historyLists));
+        this.props.dispatch(addHistory(historyList));
     }
 }
 
@@ -238,7 +238,7 @@ const styles = {
 
 export default connect((state, ownProps) => ({
     searchText: state.search.searchText,
-    historyLists: state.history.historyLists,
+    historyList: state.history.historyList,
     creatingPost: state.post.creatingPost,
     creatingVote: state.post.creatingVote,
     toast: state.toast
